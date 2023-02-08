@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:replace="home::layout(~{::body})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container text-center">
+        <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;font-size: 25px;">Stack in JAVA</span><br>
+    </div> 
+    <div class="container md 4 offset-md2" >
+        <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;">The <b>stack</b> is a linear data structure that is used to store the collection of objects. It is based on <b>Last-In-First-Out (LIFO)</b>. Java collection framework provides many interfaces and classes to store the collection of objects. One of them is the Stack class that provides different operations such as push, pop, search, etc.<br>
+        </p>
+           <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold; font-size: 15px;">The important methods of Java Stack as follows:</h5>
+        
+        <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;"> 1. <b>push()</b> - The method inserts an item onto the top of the stack. It works the same as the method addElement(item) method of the Vector class. It passes a parameter item to be pushed into the stack.<br>
+            2. <b>pop()</b> - The method removes an object at the top of the stack and returns the same object. It throws EmptyStackException if the stack is empty.<br>
+            3. <b>peek()</b>- It looks at the element that is at the top in the stack. It also throws EmptyStackException if the stack is empty.<br>
+    </div> 
+    <div class="container md 4 offset 2 border bg-light" >
+        <form action="" th:action="@{/stackpush}" method="POST" th:object="${aList}">
+            <h3>Stack Operations</h3>
+            <label for="arrElement">Add Element</label>
+            <input type="text" name="arrElement">
+            <button class="btn-primary btn-sm" type="submit">Push Stack</button>
+            <button class="btn-primary btn-sm" type="submit" value="pop" th:formaction="@{/stackpop}">Pop Stack</button>
+            <button class="btn-primary btn-sm" type="submit" value="peek" th:formaction="@{/stackpeek}">Show Top</button>
+            <button class="btn-primary btn-sm" type="submit" value="show_stack" th:formaction="@{/stackshow}">Show Stack</button>
+            <button class="btn-primary btn-sm" type="submit" value="reset" th:formaction="@{/resetstack}" >Reset</button>
+            <br> 
+            <br> 
+            <h4>Stack Result</h4>
+            <table>
+                <tbody>
+                    <th style="font-size: 30px;"></th>
+                        <tr>
+                            <td style="border: 1px solid black; text-align: center; width:70px" th:each="arrList : ${arr}"  th:text="${arrList}"></td>
+                        </tr>
+                </tbody>
+            </table>
+            <p th:if="${stackerror} == 'stackmty'" style="color: red; font-weight:bold;">Stack is Empty.</p>
+            <p th:if="${topEle} != ''" style="color: rgb(100, 40, 40); font-weight:bold;font-size: 50px;" th:text="${topEle}">Top Element of Stack</p>
+             </form> 
+            </tr>       
+    </div>
+</body>
+</html>

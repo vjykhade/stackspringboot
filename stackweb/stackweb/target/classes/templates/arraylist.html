@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:replace="home::layout(~{::body})">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div class="container text-center">
+            <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;font-size: 25px;">Array List in JAVA</span><br>
+        </div> 
+        <div class="container md 4 offset-md2" >
+            <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;">1. Java <b>ArrayList</b> class uses a dynamic array for storing the elements. It is like an array, but there is no size limit. We can add or remove elements anytime. So, it is much more flexible than the traditional array. It is found in the java.util package. It is like the Vector in C++. <br>
+               2. The ArrayList in Java can have the duplicate elements also. It implements the List interface so we can use all the methods of the List interface here. The ArrayList maintains the insertion order internally.<br>
+               3. It inherits the AbstractList class and implements List interface.<br>
+            </p>
+               <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold; font-size: 15px;">The important points about the Java ArrayList class are:</h5>
+            
+            <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;"> 1. Java ArrayList class can contain duplicate elements.<br>
+                2. Java ArrayList class maintains insertion order.<br>
+                3. Java ArrayList class is non synchronized.<br>
+                4. Java ArrayList allows random access because the array works on an index basis.<br>
+                5. ArrayList, manipulation is a little bit slower than the LinkedList in Java because a lot of shifting needs to occur if any element is removed from the array list.<br>
+                6. We can not create an array list of the primitive types, such as int, float, char, etc. It is required to use the required wrapper class in such cases.</p>
+        </div>  
+        <div class="container md 4 offset 2 border bg-light">
+                 <form action="" th:action="@{/arrayinsert}" method="POST" th:object="${aList}">
+                    <h3>ArrayList Operations</h3>
+                    <label for="arrElement">Add Element</label>
+                    <input type="text" name="arrElement">
+                    <button class="btn-primary btn-sm" type="submit">Insert Element</button>
+                    <button class="btn-primary btn-sm" type="submit" value="ashow" th:formaction="@{/arrshow}">Show ArrayList</button>
+                    <button class="btn-primary btn-sm" type="submit" value="reset" th:formaction="@{/resetpage}">Reset</button>
+                    <br> 
+                    <br> 
+                    <h4>ArrayList Result</h4>
+                    <table>
+                        <tbody>
+                            <th style="font-size: 30px;"></th>
+                                <tr>
+                                    <td style="border: 1px solid black; text-align: center; width:70px" th:each="arrList : ${arr}"  th:text="${arrList}"></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <p th:if="${arrerror} == 'mtylist'" style="color: red; font-weight:bold;">ArrayList is Empty.</p>
+                    <p th:if="${searchArr} == 'found'" style="color: red; font-weight:bold;">Element is found in Arraylist</p>
+                    <p th:if="${searchArr} == 'notfound'" style="color: red; font-weight:bold;">Element is not found in Arraylist</p>
+                     </form> 
+                    </tr>    
+        </div>
+</body>
+</html>
